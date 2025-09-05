@@ -16,4 +16,4 @@ spec:
     automated:
       selfHeal: true
       prune: true
-      allowEmpty: false
+      allowEmpty: true
