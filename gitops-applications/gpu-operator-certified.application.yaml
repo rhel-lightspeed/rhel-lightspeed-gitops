@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rhel-lightspeed-gpu-operator-certified
+  name: nvidia-gpu-operator
   # namespace: maas-config
 spec:
   destination:
