@@ -4,10 +4,14 @@ metadata:
   name: cuda-vectoradd
   namespace: rhel-lightspeed-ai
 spec:
- restartPolicy: OnFailure
- containers:
- - name: cuda-vectoradd
-   image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda12.5.0-ubi8"
-   resources:
-     limits:
-       nvidia.com/gpu: 1
+  restartPolicy: OnFailure
+  tolerations:
+    - key: "nvidia.com/gpu"
+      operator: "Exists"
+      effect: "NoSchedule"
+  containers:
+    - name: cuda-vectoradd
+      image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda12.5.0-ubi8"
+      resources:
+        limits:
+          nvidia.com/gpu: 1
