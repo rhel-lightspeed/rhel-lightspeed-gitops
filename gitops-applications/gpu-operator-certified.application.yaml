@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nvidia-gpu-operator
+  name: gpu-operator-certified
   # namespace: maas-config
 spec:
   destination:
     name: in-cluster
   project: default
   source:
-    path: gpu-operator-certified/aggregate/overlays/aws
-    repoURL: 'https://github.com/redhat-cop/gitops-catalog/'
+    path: operators/gpu-operator-certified/aggregate/overlays/openshift
+    repoURL: 'https://github.com/app-sre/hcm-ai-playground'
     targetRevision: main
   syncPolicy:
     automated:
