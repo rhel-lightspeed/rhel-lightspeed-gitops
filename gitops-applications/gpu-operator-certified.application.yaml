@@ -8,7 +8,7 @@ spec:
     name: in-cluster
   project: default
   source:
-    path: operators/gpu-operator-certified/aggregate/overlays/openshift
+    path: operators/gpu-operator-certified/aggregate/overlays/aws
     repoURL: 'https://github.com/app-sre/hcm-ai-playground'
     targetRevision: main
   syncPolicy:
