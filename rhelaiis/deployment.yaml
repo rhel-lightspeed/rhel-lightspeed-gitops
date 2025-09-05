@@ -19,6 +19,7 @@ spec:
       - key: "nvidia.com/gpu"
         operator: "Exists"
         effect: "NoSchedule"
+      runtimeClassName: nvidia
       containers:
       - name: vllm
         image: registry.redhat.io/rhaiis/vllm-cuda-rhel9:3.2.1
