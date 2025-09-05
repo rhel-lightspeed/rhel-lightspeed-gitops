@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hcm-ai-argocd-permissions-patch
-  namespace: maas-config
+  namespace: rhel-lightspeed-ai
 spec:
   destination:
     name: in-cluster
