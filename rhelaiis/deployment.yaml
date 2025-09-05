@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rhelaiis
+  namespace: rhel-lightspeed-ai
+  labels:
+    app: rhelaiis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rhelaiis
+  template:
+    metadata:
+      labels:
+        app: rhelaiis
+    spec:
+      tolerations:
+      - key: "nvidia.com/gpu"
+        operator: "Exists"
+        effect: "NoSchedule"
+      containers:
+      - name: vllm
+        image: registry.redhat.io/rhaiis/vllm-cuda-rhel9:3.2.1
+        env:
+        - name: VLLM_LOGGING_LEVEL
+          value: "DEBUG"
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+          name: http
+        args:
+        - "--model"
+        - "RedHatAI/phi-4-FP8-dynamic"
+        - "--host"
+        - "0.0.0.0"
+        - "--port"
+        - "8000"
+        resources:
+          requests:
+            cpu: "2"
+            memory: "8Gi"
+            nvidia.com/gpu: 1
+          limits:
+            cpu: "8"
+            memory: "16Gi"
+            nvidia.com/gpu: 1
+        volumeMounts:
+        - name: cache-volume
+          mountPath: /opt/app-root/src/.cache
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 120
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      volumes:
+      - name: cache-volume
+        persistentVolumeClaim:
+          claimName: rhelaiis-cache

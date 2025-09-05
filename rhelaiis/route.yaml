@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: rhelaiis
+  namespace: rhel-lightspeed-ai
+  labels:
+    app: rhelaiis
+spec:
+  to:
+    kind: Service
+    name: rhelaiis
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
