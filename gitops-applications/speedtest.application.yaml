@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: speedtest
-    repoURL: 'https://github.com/redhat/rhel-lightspeed-gitops'
+    repoURL: 'https://github.com/rhel-lightspeed/rhel-lightspeed-gitops'
     targetRevision: main
   syncPolicy:
     automated:
