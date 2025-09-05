@@ -8,7 +8,7 @@ spec:
     name: in-cluster
   project: default
   source:
-    path: gpu-operator-certified/operator/overlays/aws
+    path: /gpu-operator-certified/aggregate/overlays/aws
     repoURL: 'https://github.com/redhat-cop/gitops-catalog/'
     targetRevision: main
   syncPolicy:
