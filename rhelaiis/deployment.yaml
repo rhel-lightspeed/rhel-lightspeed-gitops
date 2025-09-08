@@ -35,7 +35,7 @@ spec:
           name: http
         args:
         - "--model"
-        - "RedHatAI/phi-4-FP8-dynamic"
+        - "RedHatAI/phi-4"
         - "--host"
         - "0.0.0.0"
         - "--port"
