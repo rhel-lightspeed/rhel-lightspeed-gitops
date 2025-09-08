@@ -17,7 +17,8 @@ spec:
     spec:
       tolerations:
       - key: "nvidia.com/gpu"
-        operator: "Exists"
+        operator: "Equal"
+        value: "A10G"
         effect: "NoSchedule"
       containers:
       - name: vllm
