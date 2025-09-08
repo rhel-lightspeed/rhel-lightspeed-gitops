@@ -59,11 +59,11 @@ spec:
           requests:
             cpu: "2"
             memory: "8Gi"
-            nvidia.com/gpu: 4
+            nvidia.com/gpu: 1
           limits:
             cpu: "12"
             memory: "48Gi"
-            nvidia.com/gpu: 4
+            nvidia.com/gpu: 1
         volumeMounts:
         - name: cache-volume
           mountPath: /opt/app-root/src/.cache
