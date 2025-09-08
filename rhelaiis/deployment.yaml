@@ -41,6 +41,10 @@ spec:
         - "0.0.0.0"
         - "--port"
         - "8000"
+        - "--gpu-memory-utilization"
+        - "0.95"
+        - "--max-model-len"
+        - "100000"
         resources:
           requests:
             cpu: "2"
