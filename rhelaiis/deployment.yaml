@@ -32,6 +32,8 @@ spec:
           value: "0"
         - name: PYTORCH_CUDA_ALLOC_CONF
           value: "expandable_segments:True"
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0,1,2,3"  # Ensure all GPUs are visible
         ports:
         - containerPort: 8000
           protocol: TCP
@@ -43,10 +45,16 @@ spec:
         - "0.0.0.0"
         - "--port"
         - "8000"
+        - "--tensor-parallel-size"
+        - "4"  # Use all 4 GPUs for tensor parallelism
+        - "--pipeline-parallel-size"
+        - "1"  # Keep pipeline parallel at 1 for tensor parallelism
         - "--gpu-memory-utilization"
-        - "0.95"
+        - "0.85"  # Conservative to avoid OOM across 4 GPUs
         - "--max-model-len"
-        - "100000"
+        - "32768"  # Increased context length with more VRAM
+        - "--disable-custom-all-reduce"  # Helps with multi-GPU stability
+        - "--enforce-eager"  # Can help with multi-GPU consistency
         resources:
           requests:
             cpu: "2"
