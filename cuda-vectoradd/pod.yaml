@@ -4,6 +4,7 @@ metadata:
   name: cuda-vectoradd
   namespace: rhel-lightspeed-ai
 spec:
+  replicas: 0
   restartPolicy: OnFailure
   tolerations:
     - key: "nvidia.com/gpu"
