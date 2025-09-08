@@ -39,22 +39,26 @@ spec:
           protocol: TCP
           name: http
         args:
+        args:
         - "--model"
         - "RedHatAI/Mistral-Small-24B-Instruct-2501-quantized.w4a16"
         - "--host"
         - "0.0.0.0"
         - "--port"
         - "8000"
-        - "--tensor-parallel-size"
-        - "4"  # Use all 4 GPUs for tensor parallelism
-        - "--pipeline-parallel-size"
-        - "1"  # Keep pipeline parallel at 1 for tensor parallelism
         - "--gpu-memory-utilization"
-        - "0.85"  # Conservative to avoid OOM across 4 GPUs
+        - "0.95"
         - "--max-model-len"
-        - "32768"  # Increased context length with more VRAM
-        - "--disable-custom-all-reduce"  # Helps with multi-GPU stability
-        - "--enforce-eager"  # Can help with multi-GPU consistency
+        - "100000"
+        resources:
+          requests:
+            cpu: "2"
+            memory: "8Gi"
+            nvidia.com/gpu: 1
+          limits:
+            cpu: "12"
+            memory: "48Gi"
+            nvidia.com/gpu: 1
         resources:
           requests:
             cpu: "2"
