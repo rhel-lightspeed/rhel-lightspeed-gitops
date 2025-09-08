@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openspeedtest
+  namespace: rhel-lightspeed-ai
+spec:
+  destination:
+    name: in-cluster
+    namespace: rhel-lightspeed-ai
+  project: default
+  source:
+    path: speedtest
+    repoURL: 'https://github.com/rhel-lightspeed/rhel-lightspeed-gitops'
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: false
