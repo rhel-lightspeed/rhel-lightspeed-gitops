@@ -36,7 +36,7 @@ spec:
           name: http
         args:
         - "--model"
-        - "openai/gpt-oss-20b"
+        - "RedHatAI/Mistral-Small-3.1-24B-Instruct-2503-FP8-dynamic"
         - "--host"
         - "0.0.0.0"
         - "--port"
