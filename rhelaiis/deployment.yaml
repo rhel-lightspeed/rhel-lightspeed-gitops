@@ -15,6 +15,9 @@ spec:
       labels:
         app: rhelaiis
     spec:
+      securityContext:
+        seLinuxOptions:
+          level: "s0:c30,c25"
       tolerations:
       - key: "nvidia.com/gpu"
         operator: "Equal"
