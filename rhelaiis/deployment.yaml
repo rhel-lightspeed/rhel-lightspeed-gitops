@@ -47,8 +47,8 @@ spec:
             memory: "8Gi"
             nvidia.com/gpu: 1
           limits:
-            cpu: "8"
-            memory: "16Gi"
+            cpu: "12"
+            memory: "48Gi"
             nvidia.com/gpu: 1
         volumeMounts:
         - name: cache-volume
