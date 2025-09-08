@@ -30,6 +30,8 @@ spec:
           value: "DEBUG"
         - name: HF_HUB_OFFLINE
           value: "0"
+        - name: PYTORCH_CUDA_ALLOC_CONF
+          value: "expandable_segments:True"
         ports:
         - containerPort: 8000
           protocol: TCP
