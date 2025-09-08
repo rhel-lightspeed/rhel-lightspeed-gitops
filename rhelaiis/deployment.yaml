@@ -36,7 +36,7 @@ spec:
           name: http
         args:
         - "--model"
-        - "ibm-granite/granite-4.0-tiny-preview"
+        - "ibm-granite/granite-3.3-8b-instruct"
         - "--host"
         - "0.0.0.0"
         - "--port"
