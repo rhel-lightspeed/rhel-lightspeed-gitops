@@ -35,6 +35,8 @@ spec:
           value: "expandable_segments:True"
         - name: CUDA_VISIBLE_DEVICES
           value: "0,1,2,3"  # Ensure all GPUs are visible
+        - name: HF_HOME
+          value: "/tmp/hf_home"
         ports:
         - containerPort: 8000
           protocol: TCP
