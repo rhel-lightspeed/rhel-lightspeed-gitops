@@ -52,7 +52,6 @@ spec:
         - "0.95"
         - "--max-model-len"
         - "100000"
-        - "--async-scheduling"
         resources:
           requests:
             cpu: "2"
