@@ -64,8 +64,8 @@ spec:
             memory: "48Gi"
             nvidia.com/gpu: 1
         volumeMounts:
-        # - name: cache-volume
-        #   mountPath: /opt/app-root/src/.cache
+        - name: cache-volume
+          mountPath: /.cache
         - name: dshm
           mountPath: /dev/shm
         livenessProbe:
@@ -85,9 +85,9 @@ spec:
           timeoutSeconds: 5
           failureThreshold: 3
       volumes:
-      # - name: cache-volume
-      #   persistentVolumeClaim:
-      #     claimName: vllm-cache
+      - name: cache-volume
+        persistentVolumeClaim:
+          claimName: vllm-cache
       - name: dshm
         emptyDir:
           medium: Memory
