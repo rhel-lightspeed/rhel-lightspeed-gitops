@@ -24,7 +24,8 @@ spec:
         effect: "NoSchedule"
       containers:
       - name: vllm
-        image: registry.redhat.io/rhaiis/vllm-cuda-rhel9:3.2.1
+        # image: registry.redhat.io/rhaiis/vllm-cuda-rhel9:3.2.1
+        image: docker.io/vllm/vllm-openai:v0.10.2
         env:
         - name: VLLM_LOGGING_LEVEL
           value: "DEBUG"
@@ -50,8 +51,6 @@ spec:
         - "--max-model-len"
         - "100000"
         - "--async-scheduling"
-        - "--quantization"
-        - "none"
         resources:
           requests:
             cpu: "2"
