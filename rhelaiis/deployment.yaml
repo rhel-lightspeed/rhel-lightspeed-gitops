@@ -85,9 +85,9 @@ spec:
           timeoutSeconds: 5
           failureThreshold: 3
       volumes:
-      - name: cache-volume
-        persistentVolumeClaim:
-          claimName: vllm-cache
+      # - name: cache-volume
+      #   persistentVolumeClaim:
+      #     claimName: vllm-cache
       - name: dshm
         emptyDir:
           medium: Memory
