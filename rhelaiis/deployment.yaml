@@ -41,7 +41,7 @@ spec:
         args:
         args:
         - "--model"
-        - "RedHatAI/Mistral-Small-24B-Instruct-2501-quantized.w4a16"
+        - "openai/gpt-oss-20b"
         - "--host"
         - "0.0.0.0"
         - "--port"
@@ -50,6 +50,7 @@ spec:
         - "0.95"
         - "--max-model-len"
         - "100000"
+        - "--async-scheduling"
         resources:
           requests:
             cpu: "2"
