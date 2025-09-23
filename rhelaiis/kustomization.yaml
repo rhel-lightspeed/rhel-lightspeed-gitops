@@ -5,6 +5,7 @@ namespace: rhel-lightspeed-ai
 resources:
   - pvc.yaml
   - pvc-config.yaml
+  - pvc-triton.yaml
   - deployment.yaml
   - service.yaml
   - route.yaml
