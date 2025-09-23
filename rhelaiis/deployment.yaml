@@ -29,6 +29,9 @@ spec:
         env:
         - name: VLLM_LOGGING_LEVEL
           value: "DEBUG"
+          # https://github.com/vllm-project/vllm-ascend/issues/2416#issuecomment-3289563052
+        - name: NCCL_P2P_DISABLE
+          value: "1"
         - name: HF_HUB_OFFLINE
           value: "0"
         - name: PYTORCH_CUDA_ALLOC_CONF
@@ -52,6 +55,8 @@ spec:
         - "0.95"
         - "--max-model-len"
         - "100000"
+        # https://github.com/vllm-project/vllm-ascend/issues/2416#issuecomment-3289563052
+        - "--disable-custom-all-reduce"
         resources:
           requests:
             cpu: "2"
