@@ -35,10 +35,6 @@ spec:
           value: "expandable_segments:True"
         - name: CUDA_VISIBLE_DEVICES
           value: "0,1,2,3"  # Ensure all GPUs are visible
-        - name: VLLM_CONFIG_ROOT
-          value: "/opt/app-root/src/.config"
-        - name: VLLM_CACHE_ROOT
-          value: "/opt/app-root/src/.cache"
         ports:
         - containerPort: 8000
           protocol: TCP
@@ -66,9 +62,9 @@ spec:
             nvidia.com/gpu: 1
         volumeMounts:
         - name: cache-volume
-          mountPath: /opt/app-root/src/.cache
+          mountPath: /.cache
         - name: config-volume
-          mountPath: /opt/app-root/src/.config
+          mountPath: /.config
         - name: dshm
           mountPath: /dev/shm
         livenessProbe:
