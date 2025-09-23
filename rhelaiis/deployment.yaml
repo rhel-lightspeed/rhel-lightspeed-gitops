@@ -39,7 +39,6 @@ spec:
           protocol: TCP
           name: http
         args:
-        args:
         - "--model"
         - "openai/gpt-oss-20b"
         - "--host"
@@ -51,15 +50,6 @@ spec:
         - "--max-model-len"
         - "100000"
         - "--async-scheduling"
-        resources:
-          requests:
-            cpu: "2"
-            memory: "8Gi"
-            nvidia.com/gpu: 1
-          limits:
-            cpu: "12"
-            memory: "48Gi"
-            nvidia.com/gpu: 1
         resources:
           requests:
             cpu: "2"
