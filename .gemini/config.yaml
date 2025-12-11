@@ -1,0 +1,44 @@
+# Google Gemini Code Assist Configuration
+# GitOps Repository for ArgoCD/Kubernetes/OpenShift
+
+# Professional mode - no poems or fun in summaries
+have_fun: false
+
+# Files and patterns to ignore during code review
+ignore_patterns:
+  - ".git/**"
+  - ".claude/**"
+  - "*.md"
+  - ".gitignore"
+  - "LICENSE"
+  - ".gemini/**"
+
+# Memory configuration - keep enabled for context across reviews
+memory_config:
+  disabled: false
+
+# Code review configuration
+code_review:
+  # Enable code review functionality
+  disable: false
+
+  # Comment severity threshold - MEDIUM catches most important issues
+  # without overwhelming with minor suggestions
+  comment_severity_threshold: MEDIUM
+
+  # Maximum review comments per PR - reasonable limit to keep reviews focused
+  max_review_comments: 50
+
+  # Pull request opened triggers
+  pull_request_opened:
+    # Provide helpful suggestions
+    help: true
+
+    # Generate PR summaries
+    summary: true
+
+    # Perform code reviews
+    code_review: true
+
+    # Exclude draft PRs from automatic review (let authors finish first)
+    include_drafts: false

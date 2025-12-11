@@ -17,7 +17,12 @@
     "labels": ["renovate", "dependencies"],
     "kubernetes": {
         "managerFilePatterns": ["**/*.yaml"],
-        "ignorePaths": ["gitops-applications/**"]
+        "ignorePaths": [
+            "gitops-applications/**",
+            "cuda-vectoradd/**",
+            "rhelaiis/**",
+            "speedtest/**"
+        ]
     },
     "packageRules": [
         {
