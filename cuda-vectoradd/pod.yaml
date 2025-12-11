@@ -12,7 +12,7 @@ spec:
       effect: "NoSchedule"
   containers:
     - name: cuda-vectoradd
-      image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda12.5.0-ubi8"
+      image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda12.5.0-ubi8@sha256:eab5f487d4d5cb84a894117f0e9e3e1664c7bce450401e1c216c5ac622fc4d5f"
       resources:
         limits:
           nvidia.com/gpu: 1

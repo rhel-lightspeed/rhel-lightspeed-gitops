@@ -25,7 +25,7 @@ spec:
       containers:
       - name: vllm
         # image: registry.redhat.io/rhaiis/vllm-cuda-rhel9:3.2.1
-        image: docker.io/vllm/vllm-openai:v0.10.2
+        image: docker.io/vllm/vllm-openai:v0.12.0@sha256:6766ce0c459e24b76f3e9ba14ffc0442131ef4248c904efdcbf0d89e38be01fe
         env:
         - name: VLLM_LOGGING_LEVEL
           value: "DEBUG"
