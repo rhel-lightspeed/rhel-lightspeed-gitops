@@ -3,10 +3,33 @@
     "extends": [
         "config:recommended",
         ":automergeAll",
-        "config:best-practices"
+        "config:best-practices",
+        "docker:pinDigests"
     ],
     "platformAutomerge": true,
     "git-submodules": {
         "enabled": true
-    }
+    },
+    "argocd": {
+        "managerFilePatterns": ["gitops-applications/**/*.yaml"]
+    },
+    "semanticCommits": "enabled",
+    "labels": ["renovate", "dependencies"],
+    "kubernetes": {
+        "managerFilePatterns": ["**/*.yaml"],
+        "ignorePaths": ["gitops-applications/**"]
+    },
+    "packageRules": [
+        {
+            "description": "Group all container image updates",
+            "matchDatasources": ["docker"],
+            "groupName": "container images"
+        },
+        {
+            "description": "Require manual review for major updates",
+            "matchUpdateTypes": ["major"],
+            "automerge": false,
+            "labels": ["major-update", "needs-review"]
+        }
+    ]
 }
