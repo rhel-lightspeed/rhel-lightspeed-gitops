@@ -2,7 +2,7 @@
 # GitOps Repository for ArgoCD/Kubernetes/OpenShift
 
 # Professional mode - no poems or fun in summaries
-have_fun: false
+have_fun: true
 
 # Files and patterns to ignore during code review
 ignore_patterns:
