@@ -15,9 +15,22 @@ spec:
       labels:
         app: librespeed
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: librespeed
-        image: ghcr.io/librespeed/speedtest:latest
+        image: ghcr.io/librespeed/speedtest@sha256:d646459c729f7d4c82bbd50c9268578d98ccfb91210d0a4638b51ff9ba9403dc
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          capabilities:
+            drop:
+              - ALL
         env:
         - name: WEBPORT
           value: "8080"
@@ -38,9 +51,23 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /
             port: 8080
           initialDelaySeconds: 5
           periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: cache
+          mountPath: /var/cache
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
