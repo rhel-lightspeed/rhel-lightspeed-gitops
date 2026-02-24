@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: label-studio
+  namespace: rhel-lightspeed-ai
+spec:
+  project: default
+  source:
+    repoURL: https://charts.heartex.com
+    chart: label-studio
+    targetRevision: 2.0.0
+    helm:
+      values: |
+        app:
+          podSecurityContext:
+            runAsNonRoot: true
+          containerSecurityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+  destination:
+    name: in-cluster
+    namespace: rhel-lightspeed-ai
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
