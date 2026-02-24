@@ -14,9 +14,33 @@ spec:
         app:
           podSecurityContext:
             runAsNonRoot: true
+            fsGroup: null
+            runAsUser: null
+            runAsGroup: null
           containerSecurityContext:
             runAsNonRoot: true
             allowPrivilegeEscalation: false
+            runAsUser: null
+        postgresql:
+          primary:
+            podSecurityContext:
+              enabled: true
+              fsGroup: null
+              runAsUser: null
+            containerSecurityContext:
+              enabled: true
+              runAsNonRoot: true
+              runAsUser: null
+        redis:
+          master:
+            podSecurityContext:
+              enabled: true
+              fsGroup: null
+              runAsUser: null
+            containerSecurityContext:
+              enabled: true
+              runAsNonRoot: true
+              runAsUser: null
   destination:
     name: in-cluster
     namespace: rhel-lightspeed-ai
