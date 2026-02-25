@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: label-studio-route
+  namespace: rhel-lightspeed-ai
+spec:
+  destination:
+    name: in-cluster
+    namespace: rhel-lightspeed-ai
+  project: default
+  source:
+    path: label-studio
+    repoURL: 'https://github.com/rhel-lightspeed/rhel-lightspeed-gitops'
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: false
