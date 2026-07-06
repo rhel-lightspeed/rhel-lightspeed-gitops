@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://charts.heartex.com
     chart: label-studio
-    targetRevision: 2.0.5
+    targetRevision: 2.0.6
     helm:
       values: |
         app:
